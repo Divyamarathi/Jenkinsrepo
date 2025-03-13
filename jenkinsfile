@@ -1,34 +1,35 @@
-pipeline {
-    agent {  label 'tomcat' }
-    triggers {  cron '* * * * * ' }
+pipeline{
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/artisantek/java-example.git'
-            }
-        }
+agent {
+  label 'tomcat'
+  }
+stages {
+  	stage('checkout') {
+    		steps {
+      			git branch: 'main', url: 'https://github.com/sruthichandalada/java-example-fork.git'
+    		}
+  	}
 
-        stage('test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+  	stage('test') {
+    		steps {
+      			echo "this is the test case"
+    		}
+  	}
 
-        stage('build') {
-            steps {
-                echo 'mvn clean install'
-            }
-        }
+  	stage('build') {
+    		steps {
+      			sh 'mvn clean install'
+      			
+      		
+    		}
+  	}
+	
+	stage('deploy') {
+    		steps {
+      			sh 'sudo cp /home/ubuntu/jenkins/workspace/tomcat_war/target/*.war /opt/tomcat/apache-tomcat-9.0.98/webapps'
+    		}
+  	}
 
-        stage('Deploy') {
-            steps {
-                sh 'rm -rf works-with-heroku-1.0.war works-with-heroku-1.0'
-                sh 'sudo cp target/works-with-heroku-1.0.war /opt/tomcat/apache-tomcat-9.0.68/webapps/'
-                
-            }
-        }
-
-    }
+}
 
 }
