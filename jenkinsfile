@@ -23,7 +23,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                sh 'rm -rf works-with-heroku-1.0.war works-with-heroku-1.0'
                 sh 'sudo cp target/works-with-heroku-1.0.war /opt/tomcat/apache-tomcat-9.0.68/webapps/'
+                
             }
         }
 
