@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Parallel Stages') {
+            parallel {
+                stage('Unit Test') {
+                    steps {
+                        echo 'Running unit tests'
+                    }
+                }
+                stage('Integration Test') {
+                    steps {
+                        echo 'Running integration tests'
+                    }
+                }
+            }
+        }
+    }
+}
