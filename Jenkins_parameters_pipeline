@@ -27,6 +27,11 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input{
+                message "Hi! want to continue further"
+                OK "yes,would like to contionue"
+                submitter "divya,user1"
+            }
             steps {
                 echo "Deploying to ${params.DEPLOY_ENV} environment..."
                 // Add your deployment steps here
