@@ -36,6 +36,7 @@ pipeline {
             }
             steps {
                 echo "Deploying to ${params.DEPLOY_ENV} environment..."
+                echo "hello,${USER} welcome "
                 // Add your deployment steps here
             }
         }
