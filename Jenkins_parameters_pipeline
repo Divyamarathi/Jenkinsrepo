@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             input{
                 message "Hi! want to continue further"
-                OK "yes,would like to contionue"
+                ok "yes,would like to contionue"
                 submitter "divya,user1"
             }
             steps {
