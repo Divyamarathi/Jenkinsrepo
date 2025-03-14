@@ -30,7 +30,9 @@ pipeline {
             input{
                 message "Hi! want to continue further"
                 ok "yes,would like to contionue"
-                submitter "divya,user1"
+                parameter{
+                string(name:'USER')
+                }
             }
             steps {
                 echo "Deploying to ${params.DEPLOY_ENV} environment..."
