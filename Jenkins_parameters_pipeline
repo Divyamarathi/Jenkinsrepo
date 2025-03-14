@@ -30,7 +30,7 @@ pipeline {
             input{
                 message "Hi! want to continue further"
                 ok "yes,would like to contionue"
-                parameter{
+                parameters{
                 string(name:'USER')
                 }
             }
